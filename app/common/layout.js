@@ -11,6 +11,7 @@ const rowStyles = StyleSheet.create({
   rowJustifySpaceAround: {justifyContent: 'space-around'},
   rowAlignTop: {alignItems: 'flex-start'},
   rowAlignCenter: {alignItems: 'center'},
+  rowAlignBaseline: {alignItems: 'baseline'},
   rowAlignBottom: {alignItems: 'flex-end'},
 });
 
@@ -25,9 +26,10 @@ export class Row extends React.Component {
       'space-between': rowStyles.rowJustifySpaceAround,
     };
     const alignStyles = {
-      left: rowStyles.rowAlignTop,
-      right: rowStyles.rowAlignCenter,
-      center: rowStyles.rowAlignBottom,
+      top: rowStyles.rowAlignTop,
+      center: rowStyles.rowAlignCenter,
+      baseline: rowStyles.rowAlignBaseline,
+      bottom: rowStyles.rowAlignBottom,
     };
 
     return (
@@ -35,9 +37,8 @@ export class Row extends React.Component {
         {...otherProps}
         style={[
           rowStyles.row,
-          justifyStyles[justify],
-          alignStyles[align],
-          {flex},
+          justify && justifyStyles[justify],
+          align && alignStyles[align],
           style,
         ]}
       />
@@ -79,8 +80,8 @@ export class Col extends React.Component {
         {...otherProps}
         style={[
           colStyles.col,
-          justifyStyles[justify],
-          alignStyles[align],
+          justify && justifyStyles[justify],
+          align && alignStyles[align],
           {flex},
           style,
         ]}

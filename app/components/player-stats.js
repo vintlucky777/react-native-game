@@ -4,12 +4,19 @@ import {View, Text, Image, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 import ProgressBar from 'app/common/progress-bar';
 import {images} from 'assets/images';
+import {Row, Col} from 'app/common/layout';
 
 const styles = StyleSheet.create({
   wrapper: {flex: 0},
   name: {
     color: '#fff',
     fontSize: 16,
+    fontWeight: '600',
+  },
+  level: {
+    color: '#fff',
+    fontSize: 12,
+    marginLeft: 4,
     fontWeight: '600',
   },
   attrIcon: {
@@ -42,27 +49,32 @@ class PlayerStats extends React.Component {
     const {style, name, level, class: playerClass, hp, xp, minHp, maxHp, minXp, maxXp} = this.props;
 
     return (
-      <View style={style}>
-        <Text style={styles.name}>{name}</Text>
-        <ProgressBar
-          fillStyle={styles.progressFillHP}
-          backgroundStyle={styles.progressBg}
-          value={hp}
-          min={minHp}
-          max={maxHp}
-          addonBefore={<Image style={styles.attrIcon} source={images.icons.hp} resizeMode='cover'/>}
-          addonAfter={<Text style={styles.attrValue}>{hp}/{maxHp}</Text>}
-        />
-        <ProgressBar
-          fillStyle={styles.progressFillXP}
-          backgroundStyle={styles.progressBg}
-          value={xp}
-          min={minXp}
-          max={maxXp}
-          addonBefore={<Image style={styles.attrIcon} source={images.icons.xp} resizeMode='cover'/>}
-          addonAfter={<Text style={styles.attrValue}>{xp}/{maxXp}</Text>}
-        />
-      </View>
+      <Col style={style}>
+        <Row align='center'>
+          <Text style={styles.name}>{name}</Text>
+          <Text style={styles.level}>(lvl. {level})</Text>
+        </Row>
+        <View>
+          <ProgressBar
+            fillStyle={styles.progressFillHP}
+            backgroundStyle={styles.progressBg}
+            value={hp}
+            min={minHp}
+            max={maxHp}
+            addonBefore={<Image style={styles.attrIcon} source={images.icons.hp} resizeMode='cover'/>}
+            addonAfter={<Text style={styles.attrValue}>{hp}/{maxHp}</Text>}
+          />
+          <ProgressBar
+            fillStyle={styles.progressFillXP}
+            backgroundStyle={styles.progressBg}
+            value={xp}
+            min={minXp}
+            max={maxXp}
+            addonBefore={<Image style={styles.attrIcon} source={images.icons.xp} resizeMode='cover'/>}
+            addonAfter={<Text style={styles.attrValue}>{xp}/{maxXp}</Text>}
+          />
+        </View>
+      </Col>
     );
   }
 }

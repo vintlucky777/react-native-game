@@ -8,16 +8,15 @@ import {Row, Col} from 'app/common/layout';
 
 const styles = StyleSheet.create({
   wrapper: {flex: 0},
-  name: {
+  player: {
     color: '#fff',
-    fontSize: 16,
     fontWeight: '600',
   },
+  name: {
+    fontSize: 16,
+  },
   level: {
-    color: '#fff',
     fontSize: 12,
-    marginLeft: 4,
-    fontWeight: '600',
   },
   attrIcon: {
     width: 24,
@@ -50,10 +49,9 @@ class PlayerStats extends React.Component {
 
     return (
       <Col style={style}>
-        <Row align='center'>
-          <Text style={styles.name}>{name}</Text>
-          <Text style={styles.level}>(lvl. {level})</Text>
-        </Row>
+        <Text style={styles.player}>
+          <Text style={styles.name}>{name}</Text> <Text style={styles.level}>(lvl. {level})</Text>
+        </Text>
         <View>
           <ProgressBar
             fillStyle={styles.progressFillHP}

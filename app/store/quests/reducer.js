@@ -6,14 +6,15 @@ const questGroups = _.groupBy(quests, q => q.duration);
 const questSamples = _.map(questGroups, questGroup => _.sample(questGroup));
 // const gameQuests = [...debugQuests, ...questSamples];
 
-const debugQuestBase = _.sample(quests);
-const debugQuest = {
-  ...debugQuestBase,
+const makeDebugQuest = () => ({
+  ..._.sample(quests),
   id: 'debugQuest1',
   duration: 3,
-};
+  reward: {xp: 10},
+  penalty: {hp: 10},
+});
 
-const gameQuests = [debugQuest, ...questSamples];
+const gameQuests = [makeDebugQuest(), ...questSamples];
 
 export const defaultState = {
   questsList: gameQuests,
@@ -34,7 +35,13 @@ const stateAfterQuestComplete = (state) => {
   };
 
   if (activeQuest.duration < 10) {
-    return nextStateBase;
+    const newDebugQuest = makeDebugQuest();
+    return {
+      ...nextStateBase,
+      questsList: [newDebugQuest, ..._.tail(questsList)],
+      selectedQuest: newDebugQuest,
+      selectedQuestId: newDebugQuest.id,
+    };
   }
 
   const questsGroup = _(questGroups[activeQuest.duration]);

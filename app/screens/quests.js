@@ -12,11 +12,25 @@ import Swiper from 'app/common/swiper';
 import Button from 'app/common/button';
 import {actions} from 'app/store/store';
 import {alert} from 'app/utils';
+import {images} from 'assets/images';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+  },
+  background: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ui: {
+    flex: 1,
+    backgroundColor: 'rgba(20,20,20,0.7)',
   },
   header: {
     marginTop: 20,
@@ -116,36 +130,45 @@ class QuestsScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-          <Avatar
-            clickable={true}
-            onPress={showPlayerScreen}
+        <View style={styles.background}>
+          <Image
+            source={images.background}
+            style={{flex: 1}}
+            resizeMode='contain'
           />
-          <PlayerStats style={styles.playerStats} />
         </View>
-        <View style={styles.content}>
-          {this._renderQuestsSelector()}
-        </View>
-        <View style={styles.footer}>
-          <Button
-            style={activeQuestId ? styles.buttonFlee : styles.buttonStart}
-            textStyle={styles.buttonText}
-            onPress={this._handleButtonClick}
-          >
-            {activeQuestId ? 'FLEE' : 'START'}
-          </Button>
-          {/* <Button
-            style={{position: 'absolute', right: 10, bottom: 10}}
-            onPress={() => actions.player.applyReward({hp: 10})}
-          >
-            HP+
-          </Button>
-          <Button
-            style={{position: 'absolute', left: 10, bottom: 10}}
-            onPress={() => actions.player.applyPenalty({hp: 10})}
-          >
-            HP-
-          </Button> */}
+        <View style={styles.ui}>
+          <View style={styles.header}>
+            <Avatar
+              clickable={true}
+              onPress={showPlayerScreen}
+            />
+            <PlayerStats style={styles.playerStats} />
+          </View>
+          <View style={styles.content}>
+            {this._renderQuestsSelector()}
+          </View>
+          <View style={styles.footer}>
+            <Button
+              style={activeQuestId ? styles.buttonFlee : styles.buttonStart}
+              textStyle={styles.buttonText}
+              onPress={this._handleButtonClick}
+            >
+              {activeQuestId ? 'FLEE' : 'START'}
+            </Button>
+            {/* <Button
+              style={{position: 'absolute', right: 10, bottom: 10}}
+              onPress={() => actions.player.applyReward({hp: 10})}
+            >
+              HP+
+            </Button>
+            <Button
+              style={{position: 'absolute', left: 10, bottom: 10}}
+              onPress={() => actions.player.applyPenalty({hp: 10})}
+            >
+              HP-
+            </Button> */}
+          </View>
         </View>
       </View>
     );

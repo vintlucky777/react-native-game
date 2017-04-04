@@ -7,27 +7,40 @@ import Button from 'app/common/button';
 import PlayerStats from 'app/components/player-stats';
 import {getPlayerClassImage} from 'app/utils';
 
+import {images} from 'assets/images';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
   },
+  background: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  ui: {
+    flex: 1,
+    backgroundColor: 'rgba(70,70,70,0.7)',
+  },
   header: {
-    backgroundColor: '#353A3B',
     flex: 0,
     paddingTop: 20,
   },
   content: {
-    backgroundColor: '#4A5755',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
   },
   footer: {
-    backgroundColor: '#4D433F',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(20,20,20,0.7)',
     flex: 0,
     padding: 20,
   },
@@ -58,20 +71,29 @@ class PlayerScreen extends Component {
 
     return (
       <View style={styles.container}>
-        <View style={styles.header}>
-        <Button onPress={showQuestsScreen} style={{margin: 10}}>
-          Back to quests
-        </Button>
-        </View>
-        <View style={styles.content}>
+        <View style={styles.background}>
           <Image
-            style={styles.playerImage}
-            source={getPlayerClassImage(character)}
+            source={images.background}
+            style={{flex: 1}}
             resizeMode='contain'
           />
         </View>
-        <View style={styles.footer}>
-          <PlayerStats style={styles.playerStats}/>
+        <View style={styles.ui}>
+          <View style={styles.header}>
+          <Button onPress={showQuestsScreen} style={{margin: 10}}>
+            Back to quests
+          </Button>
+          </View>
+          <View style={styles.content}>
+            <Image
+              style={styles.playerImage}
+              source={getPlayerClassImage(character)}
+              resizeMode='contain'
+            />
+          </View>
+          <View style={styles.footer}>
+            <PlayerStats style={styles.playerStats}/>
+          </View>
         </View>
       </View>
     );

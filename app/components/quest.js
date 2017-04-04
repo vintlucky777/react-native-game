@@ -13,9 +13,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 36,
+    fontSize: 30,
+    textAlign: 'center',
     color: 'white',
     marginBottom: 10,
+    marginLeft: 20,
+    marginRight: 20,
   },
   imageCnt: {
     width: 180,
@@ -47,12 +50,12 @@ export default class Quest extends React.Component {
 
   questImage() {
     const {quest, startedAt, onShowInfo} = this.props;
-    const {id, title, image, duration} = quest;
+    const {id, title, icon, duration} = quest;
     const isQuestActive = !!startedAt;
     const imageView = (
       <Image
         style={styles.image}
-        source={questImage(image)}
+        source={questImage(icon)}
         resizeMode={'cover'}
       />
     );
@@ -78,11 +81,13 @@ export default class Quest extends React.Component {
 
   render() {
     const {quest, startedAt} = this.props;
-    const {id, title, image, duration} = quest;
+    const {title, duration} = quest;
 
     return (
       <View style={styles.container}>
-        <Text style={styles.title}>{title}</Text>
+        <View style={styles.titleWrp}>
+          <Text style={styles.title}>{title}</Text>
+        </View>
         {this.questImage()}
         <Timer textStyle={styles.duration} startedAt={startedAt} duration={duration}/>
       </View>

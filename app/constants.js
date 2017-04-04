@@ -1,3 +1,5 @@
+export {quests as quests, debugQuests as debugQuests} from 'app/quests';
+
 export const screenNames = {
   PLAYER: 'PLAYER',
   QUESTS: 'QUESTS',
@@ -33,72 +35,3 @@ export const colors = {
   FLEE_BUTTON: '',
   FLEE_BUTTON_TEXT: '',
 };
-
-export const quests = [
-  {
-    id: 'quest10',
-    duration: 3,
-    title: 'Fight the Ogre',
-    image: 'orc_chieftain',
-    description: 'The Ogre is on march!\nSave the village!',
-    victoryMsg: 'Hell yeaah!',
-    defeatMsg: 'The evil Ogre outran you!',
-    reward: {xp: 20},
-    penalty: {hp: 10}
-  },
-  {
-    id: 'quest20',
-    duration: 1200,
-    title: 'Defeat a Troll',
-    image: 'trolls',
-    description: 'The Ogre is on march!\nSave the village!',
-    victoryMsg: 'Hell yeaah!',
-    defeatMsg: 'The evil Ogre outran you!',
-    reward: {xp: 20},
-    penalty: {hp: 10}
-  },
-  {
-    id: 'quest30',
-    duration: 1800,
-    title: 'Raid on Barbarians',
-    image: 'elven_riot',
-    description: 'The Ogre is on march!\nSave the village!',
-    victoryMsg: 'Hell yeaah!',
-    defeatMsg: 'The evil Ogre outran you!',
-    reward: {xp: 20},
-    penalty: {hp: 10}
-  },
-  {
-    id: 'quest40',
-    duration: 2400,
-    title: 'Slave the Dragon',
-    image: 'red_dragon',
-    description: 'The Ogre is on march!\nSave the village!',
-    victoryMsg: 'Hell yeaah!',
-    defeatMsg: 'The evil Ogre outran you!',
-    reward: {xp: 20},
-    penalty: {hp: 10}
-  },
-  {
-    id: 'quest50',
-    duration: 3000,
-    title: 'Save the Princess',
-    image: 'save_the_princess',
-    description: 'The Ogre is on march!\nSave the village!',
-    victoryMsg: 'Hell yeaah!',
-    defeatMsg: 'The evil Ogre outran you!',
-    reward: {xp: 20},
-    penalty: {hp: 10}
-  },
-  {
-    id: 'quest60',
-    duration: 3600,
-    title: 'Storm the Castle',
-    image: 'temple_of_the_black_sun',
-    description: 'The Ogre is on march!\nSave the village!',
-    victoryMsg: 'Hell yeaah!',
-    defeatMsg: 'The evil Ogre outran you!',
-    reward: {xp: 20},
-    penalty: {hp: 10}
-  },
-];

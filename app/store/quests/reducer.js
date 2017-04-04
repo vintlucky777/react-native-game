@@ -1,10 +1,24 @@
+import _ from 'lodash';
 import {actionTypes} from './actions';
-import {quests} from 'app/constants';
+import {quests, debugQuests} from 'app/constants';
+
+const questGroups = _.groupBy(quests, q => q.duration);
+const questSamples = _.map(questGroups, questGroup => _.sample(questGroup));
+// const gameQuests = [...debugQuests, ...questSamples];
+
+const debugQuestBase = _.sample(quests);
+const debugQuest = {
+  ...debugQuestBase,
+  id: 'debugQuest1',
+  duration: 3,
+};
+
+const gameQuests = [debugQuest, ...questSamples];
 
 export const defaultState = {
-  questsList: quests,
-  selectedQuestId: quests[0].id,
-  selectedQuest: quests[0],
+  questsList: gameQuests,
+  selectedQuestId: gameQuests[debugQuests.length].id,
+  selectedQuest: gameQuests[debugQuests.length],
   activeQuestId: null,
   activeQuest: null,
   startedAt: null,

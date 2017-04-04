@@ -24,6 +24,35 @@ export const defaultState = {
   startedAt: null,
 };
 
+const stateAfterQuestComplete = (state) => {
+  const {questsList, activeQuest, selectedQuest} = state;
+  const nextStateBase = {
+    ...state,
+    activeQuestId: null,
+    activeQuest: null,
+    startedAt: null,
+  };
+
+  if (activeQuest.duration < 10) {
+    return nextStateBase;
+  }
+
+  const questsGroup = _(questGroups[activeQuest.duration]);
+  const questsReplacement = _(questsGroup).without(activeQuest).sample();
+  const newQuestsList = _(questsList)
+                          .without(activeQuest)
+                          .concat(questsReplacement)
+                          .sortBy('duration')
+                          .valueOf();
+
+  return {
+    ...nextStateBase,
+    questsList: newQuestsList,
+    selectedQuest: questsReplacement,
+    selectedQuestId: questsReplacement.id,
+  }
+}
+
 export const questsReducer = (state = defaultState, {type, payload}) => {
   switch(type) {
     case actionTypes.SELECT_QUEST:
@@ -42,6 +71,8 @@ export const questsReducer = (state = defaultState, {type, payload}) => {
       };
 
     case actionTypes.COMPLETE_QUEST:
+      return stateAfterQuestComplete(state);
+
     case actionTypes.FAIL_QUEST:
       return {
         ...state,

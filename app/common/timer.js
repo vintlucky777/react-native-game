@@ -5,7 +5,7 @@ import _ from 'lodash';
 
 const TICK_INTERVAL = 1000;
 
-export default class Time extends React.Component {
+export default class Timer extends React.Component {
   static propTypes = {
     duration: PropTypes.number.isRequired,
     startedAt: PropTypes.number,
@@ -29,16 +29,18 @@ export default class Time extends React.Component {
   }
 
   initTicker(props) {
-    setTimeout(() => {
+    this._tickerInit = setTimeout(() => {
       this.tick();
       this._ticker = setInterval(this.tick, TICK_INTERVAL);
     }, TICK_INTERVAL - (Date.now() - props.startedAt) % TICK_INTERVAL);
   }
 
   clearTicker() {
+    clearInterval(this._tickerInit);
     clearInterval(this._ticker);
   }
 
+  _tickerInit = null;
   _ticker = null;
 
   tick = () => {

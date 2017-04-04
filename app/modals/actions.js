@@ -34,7 +34,7 @@ export const showQuestSuccessModal = (quest) => action(SHOW_MODAL, {
   modalType: modalTypes.QUEST_VICTORY,
   modal: {
     quest: quest,
-    title: 'Victory!',
+    title: quest.title,
     actionText: 'Nice!',
     dismissable: false,
   },
@@ -43,7 +43,7 @@ export const showQuestFailureModal = (quest) => action(SHOW_MODAL, {
   modalType: modalTypes.QUEST_DEFEAT,
   modal: {
     quest: quest,
-    title: 'Defeat!',
+    title: quest.title,
     actionText: 'Oh...',
     dismissable: false,
   },

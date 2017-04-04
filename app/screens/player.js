@@ -81,12 +81,16 @@ class PlayerScreen extends Component {
         </View>
         <View style={styles.ui}>
           <Row style={styles.header}>
-            <Button onPress={showQuestsScreen} style={{margin: 10, width: 160}}>
-              Back to quests
-            </Button>
-            <Button onPress={() => actions.modal.showModal('X')} style={{margin: 10, width: 80}}>
-              Edit
-            </Button>
+            <Col flex={2}>
+              <Button onPress={showQuestsScreen} style={{margin: 10}}>
+                Back to quests
+              </Button>
+            </Col>
+            <Col flex={1}>
+              <Button onPress={() => actions.modal.showModal('X')} style={{margin: 10}}>
+                Edit
+              </Button>
+            </Col>
           </Row>
           <View style={styles.content}>
             <Image

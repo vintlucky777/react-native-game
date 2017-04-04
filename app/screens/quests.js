@@ -7,6 +7,7 @@ import Quest from 'app/components/quest';
 import PlayerStats from 'app/components/player-stats';
 import Avatar from 'app/components/avatar';
 
+import {Row, Col} from 'app/common/layout';
 import Swiper from 'app/common/swiper';
 
 import Button from 'app/common/button';
@@ -48,9 +49,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     flex: 0,
   },
   buttonStart: {
@@ -148,7 +146,7 @@ class QuestsScreen extends Component {
           <View style={styles.content}>
             {this._renderQuestsSelector()}
           </View>
-          <View style={styles.footer}>
+          <Row style={styles.footer} justify='center'>
             <Button
               style={activeQuestId ? styles.buttonFlee : styles.buttonStart}
               textStyle={styles.buttonText}
@@ -156,6 +154,12 @@ class QuestsScreen extends Component {
             >
               {activeQuestId ? 'FLEE' : 'START'}
             </Button>
+            {/* {activeQuestId && <Button
+              style={{width: 90}}
+              onPress={() => actions.quests.completeQuest(activeQuestId)}
+            >
+              Finish quest
+            </Button>} */}
             {/* <Button
               style={{position: 'absolute', right: 10, bottom: 10}}
               onPress={() => actions.player.applyReward({hp: 10})}
@@ -168,7 +172,7 @@ class QuestsScreen extends Component {
             >
               HP-
             </Button> */}
-          </View>
+          </Row>
         </View>
       </View>
     );

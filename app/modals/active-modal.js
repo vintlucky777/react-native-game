@@ -8,25 +8,29 @@ import {actions} from 'app/store/store';
 import PopupDialog, {SlideAnimation, DialogTitle, DialogButton} from 'react-native-popup-dialog';
 
 const styles = StyleSheet.create({
-  emptyScreen: {
+  modal: {
+  },
+  emptyModal: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'red',
+    backgroundColor: '#B4332A',
   },
-  emptyScreenText: {
+  emptyModalText: {
     color: 'white',
     fontSize: 30,
   },
 })
 
 class ActiveModal extends React.Component {
-  _getActiveModal() {
-    switch (this.props.modalType) {
+  _slideAnimation = new SlideAnimation({slideFrom: 'bottom'});
+
+  _getActiveModal(modalType) {
+    switch (modalType) {
       default:
         return (
-          <View style={styles.emptyScreen}>
-            <Text style={styles.emptyScreenText}>
+          <View style={styles.emptyModal}>
+            <Text style={styles.emptyModalText}>
               Modal not defined!
             </Text>
           </View>
@@ -35,16 +39,22 @@ class ActiveModal extends React.Component {
   }
 
   render() {
-    // const {title} = this.props.modal;
+    const {modalType, hideModal} = this.props;
+    const modal = this.props.modal || {};
+    const {title, actionText, dismissable} = modal;
+
     return (
       <PopupDialog
-        show={!!this.props.modalType}
-        animationDuration={400}
-        dialogAnimation = { new SlideAnimation({ slideFrom: 'bottom' }) }
-        dialogTitle={<DialogTitle title="Quest complete" />}
-        actions={<DialogButton key='YAY' text='YAY' onPress={this.props.hideModal}/>}
+        show={!!modalType}
+        dismissOnTouchOutside={dismissable}
+        dismissOnHardwareBackPress={dismissable}
+        onDismissed={hideModal}
+        dialogAnimation={this._slideAnimation}
+        dialogStyle={styles.modal}
+        dialogTitle={<DialogTitle title={title} />}
+        actions={<DialogButton key='ok' text={actionText || 'OK'} onPress={hideModal}/>}
       >
-        {this._getActiveModal()}
+        {this._getActiveModal(modalType)}
       </PopupDialog>
     );
   }

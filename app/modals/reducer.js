@@ -15,7 +15,7 @@ export const modalReducer = (state = defaultState, {type, payload}) => {
       }
 
     case actionTypes.HIDE_MODAL:
-      return defaultModalState;
+      return defaultState;
 
     default:
       return state;

@@ -3,7 +3,7 @@ import {View, Text} from 'react-native';
 import moment from 'moment';
 import _ from 'lodash';
 
-const TICK_INTERVAL = 500;
+const TICK_INTERVAL = 1000;
 
 export default class Time extends React.Component {
   static propTypes = {
@@ -29,7 +29,10 @@ export default class Time extends React.Component {
   }
 
   initTicker(props) {
-    this._ticker = setInterval(this.tick, TICK_INTERVAL);
+    setTimeout(() => {
+      this.tick();
+      this._ticker = setInterval(this.tick, TICK_INTERVAL);
+    }, TICK_INTERVAL - (Date.now() - props.startedAt) % TICK_INTERVAL);
   }
 
   clearTicker() {

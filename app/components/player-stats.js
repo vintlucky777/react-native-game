@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#6F6867',
   },
   progressFillHP: {
-    backgroundColor: '#DB584B',
+    backgroundColor: '#EB5348',
   },
   progressFillXP: {
     backgroundColor: '#57A0ED',

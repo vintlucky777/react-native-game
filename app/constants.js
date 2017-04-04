@@ -16,6 +16,24 @@ export const playerCharacters = {
   WIZARD: 'WIZARD',
 };
 
+export const colors = {
+  HP_BAR: '',
+  HP_BAR_STATS: '',
+  HP_BAR_BG: '',
+  XP_BAR: '',
+  XP_BAR_STATS: '',
+  XP_BAR_BG: '',
+  PLAYER_NAME: '',
+  PLAYER_AVATAR_BORDER: '',
+  QUEST_NAME: '',
+  QUEST_TIMER: '',
+  QUEST_IMAGE_BORDER: '',
+  START_BUTTON: '',
+  START_BUTTON_TEXT: '',
+  FLEE_BUTTON: '',
+  FLEE_BUTTON_TEXT: '',
+};
+
 export const quests = [
   {
     id: 'quest10',

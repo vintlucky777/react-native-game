@@ -7,7 +7,7 @@ import Quest from 'app/components/quest';
 import PlayerStats from 'app/components/player-stats';
 import Avatar from 'app/components/avatar';
 
-import ViewPager from 'app/common/view-pager';
+import Swiper from 'app/common/swiper';
 
 import Button from 'app/common/button';
 import {actions} from 'app/store/store';
@@ -96,10 +96,10 @@ class QuestsScreen extends Component {
     ));
 
     return (
-      <ViewPager
+      <Swiper
         items={questItems}
-        initialPage={activeQuestOrderId > 0 ? activeQuestOrderId : selectedQuestOrderId}
         itemStyle={styles.questWrapper}
+        initialPage={activeQuestOrderId > 0 ? activeQuestOrderId : selectedQuestOrderId}
         onChangePage={this._handleQuestSwipe}
         locked={!!activeQuestId}
       />

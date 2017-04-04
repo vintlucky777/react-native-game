@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import {action} from 'app/store/utils';
-import * as playerActions from 'app/store/player/actions';
-import {store} from 'app/store/store';
+import {store, actions} from 'app/store/store';
 
 export const actionTypes = {
   SELECT_QUEST: 'SELECT_QUEST',
@@ -10,21 +9,36 @@ export const actionTypes = {
   FAIL_QUEST: 'FAIL_QUEST',
 };
 
-export const selectQuest = (questId) => action(actionTypes.SELECT_QUEST, {questId});
-export const startQuest = (questId) => action(actionTypes.START_QUEST, {questId});
-export const completeQuest = (questId) => {
+const getQuestById = (questId) => {
   const state = store.getState();
-  const quest = _.find(state.quests.questsList, q => q.id === questId);
+  return _.find(state.quests.questsList, q => q.id === questId);
+}
+
+export const selectQuest = (questId) => {
+  const quest = getQuestById(questId);
+
+  action(actionTypes.SELECT_QUEST, {questId, quest});
+};
+
+export const startQuest = (questId) => {
+  const quest = getQuestById(questId);
+
+  action(actionTypes.START_QUEST, {questId, quest});
+};
+
+export const completeQuest = (questId) => {
+  const quest = getQuestById(questId);
   const {reward} = quest;
 
-  playerActions.applyReward(reward);
-  action(actionTypes.COMPLETE_QUEST);
+  actions.player.applyReward(reward);
+  actions.modal.showQuestSuccessModal(quest);
+  action(actionTypes.COMPLETE_QUEST, {questId, quest});
 }
 export const failQuest = (questId) => {
-  const state = store.getState();
-  const quest = _.find(state.quests.questsList, q => q.id === questId);
+  const quest = getQuestById(questId);
   const {penalty} = quest;
 
-  playerActions.applyPenalty(penalty);
-  action(actionTypes.FAIL_QUEST);
+  actions.player.applyPenalty(penalty);
+  actions.modal.showQuestFailureModal(quest);
+  action(actionTypes.FAIL_QUEST, {questId, quest});
 }

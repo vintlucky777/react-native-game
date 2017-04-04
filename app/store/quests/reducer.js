@@ -4,7 +4,9 @@ import {quests} from 'app/constants';
 export const defaultState = {
   questsList: quests,
   selectedQuestId: quests[0].id,
+  selectedQuest: quests[0],
   activeQuestId: null,
+  activeQuest: null,
   startedAt: null,
 };
 
@@ -14,12 +16,14 @@ export const questsReducer = (state = defaultState, {type, payload}) => {
       return {
         ...state,
         selectedQuestId: payload.questId,
+        selectedQuest: payload.quest,
       };
 
     case actionTypes.START_QUEST:
       return {
         ...state,
         activeQuestId: payload.questId,
+        activeQuest: payload.quest,
         startedAt: Date.now(),
       };
 
@@ -28,6 +32,7 @@ export const questsReducer = (state = defaultState, {type, payload}) => {
       return {
         ...state,
         activeQuestId: null,
+        activeQuest: null,
         startedAt: null,
       };
 

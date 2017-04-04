@@ -1,6 +1,7 @@
 import {actionTypes} from './actions';
 
 export const defaultState = {
+  showModal: null,
   activeModal: null,
   modal: null,
 };
@@ -10,12 +11,16 @@ export const modalReducer = (state = defaultState, {type, payload}) => {
     case actionTypes.SHOW_MODAL:
       return {
         ...state,
+        showModal: true,
         activeModal: payload.modalType,
         modal: payload.modal,
       }
 
     case actionTypes.HIDE_MODAL:
-      return defaultState;
+      return {
+        ...state,
+        showModal: false,
+      };
 
     default:
       return state;

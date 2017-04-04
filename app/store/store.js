@@ -12,6 +12,8 @@ import {playerReducer} from 'app/store/player/reducer';
 import * as questsActions from 'app/store/quests/actions';
 import {questsReducer} from 'app/store/quests/reducer';
 
+import {gameLogicLoop} from 'app/store/game-logic';
+
 const rootReducer = combineReducers({
   quests: questsReducer,
   player: playerReducer,
@@ -26,3 +28,5 @@ export const actions = {
   modal: modalActions,
   screens: screensActions,
 };
+
+gameLogicLoop();

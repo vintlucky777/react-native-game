@@ -3,12 +3,17 @@ import {connect} from 'react-redux';
 import {StyleSheet, View, Text} from 'react-native';
 
 import {modalTypes} from 'app/constants';
+import LevelUpModal from 'app/modals/level-up';
+import QuestInfoModal from 'app/modals/quest-info';
+import QuestVictoryModal from 'app/modals/quest-victory';
+import QuestDefeatModal from 'app/modals/quest-defeat';
 import {actions} from 'app/store/store';
 
 import PopupDialog, {SlideAnimation, DialogTitle, DialogButton} from 'react-native-popup-dialog';
 
 const styles = StyleSheet.create({
   modal: {
+    flex: 1,
   },
   emptyModal: {
     flex: 1,
@@ -25,8 +30,18 @@ const styles = StyleSheet.create({
 class ActiveModal extends React.Component {
   _slideAnimation = new SlideAnimation({slideFrom: 'bottom'});
 
-  _getActiveModal(modalType) {
+  _getModalContent(modalType) {
+    const {modal} = this.props;
+
     switch (modalType) {
+      case modalTypes.LEVEL_UP:
+        return <LevelUpModal modal={modal}/>
+      case modalTypes.QUEST_INFO:
+        return <QuestInfoModal modal={modal}/>
+      case modalTypes.QUEST_VICTORY:
+        return <QuestVictoryModal modal={modal}/>
+      case modalTypes.QUEST_DEFEAT:
+        return <QuestDefeatModal modal={modal}/>
       default:
         return (
           <View style={styles.emptyModal}>
@@ -39,28 +54,30 @@ class ActiveModal extends React.Component {
   }
 
   render() {
-    const {modalType, hideModal} = this.props;
+    const {showModal, modalType, hideModal} = this.props;
     const modal = this.props.modal || {};
     const {title, actionText, dismissable} = modal;
 
     return (
       <PopupDialog
-        show={!!modalType}
+        show={showModal}
         dismissOnTouchOutside={dismissable}
         dismissOnHardwareBackPress={dismissable}
         onDismissed={hideModal}
         dialogAnimation={this._slideAnimation}
-        dialogStyle={styles.modal}
         dialogTitle={<DialogTitle title={title} />}
         actions={<DialogButton key='ok' text={actionText || 'OK'} onPress={hideModal}/>}
       >
-        {this._getActiveModal(modalType)}
+        <View style={styles.modal}>
+          {this._getModalContent(modalType)}
+        </View>
       </PopupDialog>
     );
   }
 }
 
 const stateToProps = (state) => ({
+  showModal: state.modal.showModal,
   modalType: state.modal.activeModal,
   modal: state.modal.modal,
 })

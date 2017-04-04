@@ -83,7 +83,7 @@ class QuestsScreen extends Component {
   }
 
   _renderQuestsSelector() {
-    const {quests, activeQuestId, selectedQuestId, questStartedAt, selectQuest, showModal} = this.props;
+    const {quests, activeQuestId, selectedQuestId, questStartedAt, selectQuest, showQuestInfo} = this.props;
     const activeQuestOrderId = _.findIndex(quests, q => q.id === activeQuestId);
     const selectedQuestOrderId = _.findIndex(quests, q => q.id === selectedQuestId);
     const questItems = quests.map(quest => (
@@ -91,7 +91,7 @@ class QuestsScreen extends Component {
         key={quest.id}
         quest={quest}
         startedAt={quest.id === activeQuestId ? questStartedAt : null}
-        onShowInfo={() => showModal('AZAZA')}
+        onShowInfo={() => showQuestInfo(quest)}
       />
     ));
 
@@ -164,7 +164,7 @@ const actionsToProps = () => ({
   startQuest: actions.quests.startQuest,
   failQuest: actions.quests.failQuest,
   completeQuest: actions.quests.completeQuest,
-  showModal: actions.modal.showModal,
+  showQuestInfo: actions.modal.showQuestInfoModal,
   showPlayerScreen: actions.screens.showPlayerScreen,
 })
 

@@ -555,7 +555,8 @@ export default class extends Component {
           contentOffset={this.state.offset}
           onScrollBeginDrag={this.onScrollBegin}
           onMomentumScrollEnd={this.onScrollEnd}
-          onScrollEndDrag={this.onScrollEndDrag}>
+          onScrollEndDrag={this.onScrollEndDrag}
+        >
           {pages}
         </ScrollView>
        )
@@ -565,7 +566,8 @@ export default class extends Component {
         {...this.props}
         initialPage={this.props.loop ? this.state.index + 1 : this.state.index}
         onPageSelected={this.onScrollEnd}
-        style={{}}>
+        style={{flex: 1}}
+      >
         {pages}
       </ViewPagerAndroid>
     )

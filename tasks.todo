@@ -1,0 +1,9 @@
+Tasks:
+  ✔ basic Row/Col markup components @done(2017-04-04 22:26)
+  ☐ swap quest to a new one upon victory
+  ☐ hero class selector
+  ☐ name edit
+  ☐ display level
+  ☐ calculate hp/xp/loss/gain from level
+  ☐ level promotion
+  ☐ level loss

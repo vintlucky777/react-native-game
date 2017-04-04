@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import {actions} from 'app/store/store';
 
 import Button from 'app/common/button';
+import {Row, Col} from 'app/common/layout';
 import PlayerStats from 'app/components/player-stats';
 import {getPlayerClassImage} from 'app/utils';
 
@@ -79,11 +80,14 @@ class PlayerScreen extends Component {
           />
         </View>
         <View style={styles.ui}>
-          <View style={styles.header}>
-          <Button onPress={showQuestsScreen} style={{margin: 10}}>
-            Back to quests
-          </Button>
-          </View>
+          <Row style={styles.header}>
+            <Button onPress={showQuestsScreen} style={{margin: 10, width: 160}}>
+              Back to quests
+            </Button>
+            <Button onPress={() => actions.modal.showModal('X')} style={{margin: 10, width: 80}}>
+              Edit
+            </Button>
+          </Row>
           <View style={styles.content}>
             <Image
               style={styles.playerImage}

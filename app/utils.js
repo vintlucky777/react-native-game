@@ -35,12 +35,12 @@ export const getPlayerClassImage = (character) => {
 export const getPlayerLevelStats = (level) => {
   const baseHP = 100;
   const HPfactor = 1.1;
-  const maxHp = Math.round(HPfactor ** (level - 1) * baseHP);
+  const maxHp = Math.round(Math.pow(HPfactor, (level - 1)) * baseHP);
   const minHp = 0;
 
   const baseXP = 100;
   const XPfactor = 1.2;
-  const maxXp = Math.round(XPfactor ** (level - 1) * baseXP);
+  const maxXp = Math.round(Math.pow(XPfactor, (level - 1)) * baseXP);
   const minXp = 0;
 
   return {

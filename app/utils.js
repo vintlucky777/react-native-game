@@ -1,4 +1,4 @@
-import {Platform, AlertIOS, ToastAndroid} from 'react-native';
+import {Platform, AlertIOS, ToastAndroid, AsyncStorage} from 'react-native';
 import {playerCharacters} from 'app/constants';
 import {images} from 'assets/images';
 
@@ -50,4 +50,10 @@ export const getPlayerLevelStats = (level) => {
     minXp,
     maxXp,
   };
+};
+
+export const storage = {
+  storeItem: (key, data, cb) => AsyncStorage.setItem(key, JSON.stringify(data), cb),
+  getItem: (key, cb) => AsyncStorage.getItem(key, cb).then(JSON.parse),
+  removeItem: (key, cb) => AsyncStorage.removeItem(key, cb),
 };

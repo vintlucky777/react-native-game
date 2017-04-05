@@ -14,7 +14,7 @@ export const actionTypes = {
   PLAYER_DEGRADE_LEVEL: 'PLAYER_DEGRADE_LEVEL',
 };
 
-export const initPlayer = () => action(actionTypes.PLAYER_INIT, {});
+export const initPlayer = (state) => action(actionTypes.PLAYER_INIT, {...state});
 
 export const changeName = (name) => action(actionTypes.PLAYER_INIT, {name});
 export const changeCharacter = (character) => action(actionTypes.PLAYER_CHANGE_CHARACTER, {character});

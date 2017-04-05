@@ -13,6 +13,8 @@ import * as questsActions from 'app/store/quests/actions';
 import {questsReducer} from 'app/store/quests/reducer';
 
 import {gameLogicLoop} from 'app/store/game-logic';
+import {storage} from 'app/utils';
+import {storageKeys} from 'app/constants';
 
 const rootReducer = combineReducers({
   quests: questsReducer,
@@ -29,4 +31,9 @@ export const actions = {
   screens: screensActions,
 };
 
-gameLogicLoop();
+export const initialize = async () => {
+  const storedPlayer = await storage.getItem(storageKeys.PLAYER_STATE)
+  playerActions.initPlayer(storedPlayer);
+
+  gameLogicLoop();
+};

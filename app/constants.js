@@ -1,3 +1,4 @@
+import _ from 'lodash';
 export {quests as quests, debugQuests as debugQuests} from 'app/quests';
 
 export const screenNames = {
@@ -34,4 +35,9 @@ export const colors = {
   START_BUTTON_TEXT: '',
   FLEE_BUTTON: '',
   FLEE_BUTTON_TEXT: '',
+};
+
+export const storageRootKey = '@questime'
+export const storageKeys = {
+  PLAYER_STATE: `${storageRootKey}:player_state`,
 };

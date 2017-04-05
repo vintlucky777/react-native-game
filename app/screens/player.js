@@ -75,11 +75,14 @@ const styles = StyleSheet.create({
 class PlayerScreen extends Component {
   render() {
     const {
+      player,
+      showQuestsScreen,
+    } = this.props;
+    const {
       name,
       level,
       character,
-      showQuestsScreen,
-    } = this.props;
+    } = player;
 
     return (
       <View style={styles.container}>
@@ -98,7 +101,7 @@ class PlayerScreen extends Component {
               </Button>
             </Col>
             <Col flex={0} style={{width: 100}}>
-              <Button onPress={() => actions.modal.showModal('X')} style={{margin: 10}}>
+              <Button onPress={() => actions.modal.showPlayerEditModal(player)} style={{margin: 10}}>
                 Edit
               </Button>
             </Col>
@@ -124,9 +127,7 @@ class PlayerScreen extends Component {
 }
 
 const stateToProps = (state) => ({
-  name: state.player.name,
-  level: state.player.level,
-  character: state.player.character,
+  player: state.player,
 })
 
 const actionsToProps = () => ({

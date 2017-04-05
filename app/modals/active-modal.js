@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {StyleSheet, View, Text} from 'react-native';
 
 import {modalTypes} from 'app/constants';
+import PlayerEditModal from 'app/modals/player-edit';
 import LevelUpModal from 'app/modals/level-up';
 import QuestInfoModal from 'app/modals/quest-info';
 import QuestVictoryModal from 'app/modals/quest-victory';
@@ -34,6 +35,8 @@ class ActiveModal extends React.Component {
     const {modal} = this.props;
 
     switch (modalType) {
+      case modalTypes.PLAYER_EDIT:
+        return <PlayerEditModal modal={modal}/>
       case modalTypes.LEVEL_UP:
         return <LevelUpModal modal={modal}/>
       case modalTypes.QUEST_INFO:

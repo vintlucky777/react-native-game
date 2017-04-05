@@ -5,8 +5,8 @@ import {getPlayerLevelStats} from 'app/utils';
 
 export const actionTypes = {
   PLAYER_INIT: 'PLAYER_INIT',
-  PLAYER_CHANGE_NAME: 'PLAYER_CHANGE_NAME',
-  PLAYER_CHANGE_CHARACTER: 'PLAYER_CHANGE_CHARACTER',
+  PLAYER_EDIT_NAME: 'PLAYER_EDIT_NAME',
+  PLAYER_EDIT_CHARACTER: 'PLAYER_EDIT_CHARACTER',
   PLAYER_APPLY_REWARD: 'PLAYER_APPLY_REWARD',
   PLAYER_APPLY_PENALTY: 'PLAYER_APPLY_PENALTY',
   PLAYER_SET_LEVEL: 'PLAYER_SET_LEVEL',
@@ -16,8 +16,8 @@ export const actionTypes = {
 
 export const initPlayer = (state) => action(actionTypes.PLAYER_INIT, {...state});
 
-export const changeName = (name) => action(actionTypes.PLAYER_INIT, {name});
-export const changeCharacter = (character) => action(actionTypes.PLAYER_CHANGE_CHARACTER, {character});
+export const editName = (name) => action(actionTypes.PLAYER_EDIT_NAME, {name});
+export const editCharacter = (character) => action(actionTypes.PLAYER_EDIT_CHARACTER, {character});
 export const applyReward = ({hp, xp}) => action(actionTypes.PLAYER_APPLY_REWARD, {xp, hp});
 export const applyPenalty = ({hp, xp}) => action(actionTypes.PLAYER_APPLY_PENALTY, {xp, hp});
 

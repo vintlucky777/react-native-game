@@ -48,3 +48,12 @@ export const showQuestFailureModal = (quest) => action(SHOW_MODAL, {
     dismissable: false,
   },
 });
+export const showPlayerEditModal = (player) => action(SHOW_MODAL, {
+  modalType: modalTypes.PLAYER_EDIT,
+  modal: {
+    player: player,
+    title: 'Edit player',
+    actionText: 'Done',
+    dismissable: false,
+  },
+});

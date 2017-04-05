@@ -45,7 +45,7 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
         ...payload,
       };
 
-    case actionTypes.PLAYER_CHANGE_NAME:
+    case actionTypes.PLAYER_EDIT_NAME:
       nextPlayerState = {
         ...state,
         name: payload.name,
@@ -53,7 +53,7 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
       persistPlayer(nextPlayerState);
       return nextPlayerState;
 
-    case actionTypes.PLAYER_CHANGE_CHARACTER:
+    case actionTypes.PLAYER_EDIT_CHARACTER:
       nextPlayerState = {
         ...state,
         character: payload.character,

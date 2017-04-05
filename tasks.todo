@@ -6,8 +6,8 @@ Tasks:
   ✔ level promotion @done(2017-04-05 13:53) @project(Tasks)
   ✔ level loss @done(2017-04-05 13:53) @project(Tasks)
   ✔ persist progress @done(2017-04-05 15:35) @project(Tasks)
-  ☐ name edit
-  ☐ hero class edit
+  ✔ name edit @done(2017-04-05 23:33) @project(Tasks)
+  ✔ hero class edit @done(2017-04-05 23:33) @project(Tasks)
   ☐ catch app switching/suspend/tray
   ☐ app icon and name
   ☐ notifications / pushes / vibrate

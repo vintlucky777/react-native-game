@@ -12,6 +12,11 @@ const styles = StyleSheet.create({
     color: '#fff',
     fontWeight: '600',
   },
+  character: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: '600',
+  },
   name: {
     fontSize: 16,
   },
@@ -44,15 +49,37 @@ const styles = StyleSheet.create({
 });
 
 class PlayerStats extends React.Component {
+  static defaultProps = {
+    showName: true,
+    showClass: false,
+    showBars: true,
+  };
+
   render() {
-    const {style, name, level, class: playerClass, hp, xp, minHp, maxHp, minXp, maxXp} = this.props;
+    const {
+      style,
+      flex,
+      showName,
+      showClass,
+      showBars,
+      name,
+      level,
+      character,
+      hp,
+      xp,
+      minHp,
+      maxHp,
+      minXp,
+      maxXp,
+    } = this.props;
 
     return (
-      <Col style={style}>
-        <Text style={styles.player}>
+      <Col style={[styles.wrapper, style]} flex={flex}>
+        {showName && <Text style={styles.player}>
           <Text style={styles.name}>{name}</Text> <Text style={styles.level}>(lvl. {level})</Text>
-        </Text>
-        <View>
+        </Text>}
+        {showClass && <Text style={styles.character}>{character}</Text>}
+        {showBars && <View>
           <ProgressBar
             fillStyle={styles.progressFillHP}
             backgroundStyle={styles.progressBg}
@@ -71,7 +98,7 @@ class PlayerStats extends React.Component {
             addonBefore={<Image style={styles.attrIcon} source={images.icons.xp} resizeMode='cover'/>}
             addonAfter={<Text style={styles.attrValue}>{xp}/{maxXp}</Text>}
           />
-        </View>
+        </View>}
       </Col>
     );
   }
@@ -80,7 +107,7 @@ class PlayerStats extends React.Component {
 const stateToProps = (state) => _.pick(state.player, [
   'name',
   'level',
-  'class',
+  'character',
   'hp',
   'xp',
   'minHp',

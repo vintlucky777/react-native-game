@@ -7,7 +7,7 @@ Tasks:
   ✔ level loss @done(2017-04-05 13:53) @project(Tasks)
   ✔ persist progress @done(2017-04-05 15:35) @project(Tasks)
   ☐ name edit
-  ☐ hero class selector
-  ☐ catch app switching
+  ☐ hero class edit
+  ☐ catch app switching/suspend/tray
   ☐ app icon and name
   ☐ notifications / pushes / vibrate

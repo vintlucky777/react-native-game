@@ -18,6 +18,7 @@ const rowStyles = StyleSheet.create({
 export class Row extends React.Component {
   render() {
     const {justify, align, flex, style, ...otherProps} = this.props;
+    const flexStyle = flex === undefined ? {} : {flex};
     const justifyStyles = {
       left: rowStyles.rowJustifyLeft,
       right: rowStyles.rowJustifyRight,
@@ -40,6 +41,7 @@ export class Row extends React.Component {
           justify && justifyStyles[justify],
           align && alignStyles[align],
           style,
+          flexStyle,
         ]}
       />
     );
@@ -62,6 +64,7 @@ const colStyles = StyleSheet.create({
 export class Col extends React.Component {
   render() {
     const {justify, align, flex, style, ...otherProps} = this.props;
+    const flexStyle = flex === undefined ? {} : {flex};
     const justifyStyles = {
       top: colStyles.colJustifyTop,
       bottom: colStyles.colJustifyBottom,
@@ -82,8 +85,8 @@ export class Col extends React.Component {
           colStyles.col,
           justify && justifyStyles[justify],
           align && alignStyles[align],
-          {flex},
           style,
+          flexStyle,
         ]}
       />
     );

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {actions} from 'app/store/store';
+import _ from 'lodash';
 
 import Button from 'app/common/button';
 import {Row, Col} from 'app/common/layout';
@@ -38,15 +39,20 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
     backgroundColor: 'rgba(20,20,20,0.7)',
-    flex: 0,
     padding: 20,
+    paddingTop: 8,
   },
-  playerStats: {
-    flex: 1,
+  text: {
+    textAlign: 'center',
+    color: '#fff',
+  },
+  playerName: {
+    fontSize: 26,
+  },
+  playerCharacter: {
+    fontSize: 18,
+    marginBottom: 4,
   },
   button: {
     borderWidth: 2,
@@ -68,7 +74,12 @@ const styles = StyleSheet.create({
 
 class PlayerScreen extends Component {
   render() {
-    const {character, showQuestsScreen} = this.props;
+    const {
+      name,
+      level,
+      character,
+      showQuestsScreen,
+    } = this.props;
 
     return (
       <View style={styles.container}>
@@ -81,12 +92,12 @@ class PlayerScreen extends Component {
         </View>
         <View style={styles.ui}>
           <Row style={styles.header}>
-            <Col flex={2}>
+            <Col flex={0} style={{width: 100}}>
               <Button onPress={showQuestsScreen} style={{margin: 10}}>
                 Back to quests
               </Button>
             </Col>
-            <Col flex={1}>
+            <Col flex={0} style={{width: 100}}>
               <Button onPress={() => actions.modal.showModal('X')} style={{margin: 10}}>
                 Edit
               </Button>
@@ -99,9 +110,13 @@ class PlayerScreen extends Component {
               resizeMode='contain'
             />
           </View>
-          <View style={styles.footer}>
-            <PlayerStats style={styles.playerStats}/>
-          </View>
+          <Col style={styles.footer} flex={0}>
+            <Text style={[styles.text, styles.playerName]}>{name}</Text>
+            <Text style={[styles.text, styles.playerCharacter]}>{_.capitalize(character)} LvL {level}</Text>
+            <Row flex={0} justify='center' align='center'>
+              <PlayerStats flex={1} showName={false}/>
+            </Row>
+          </Col>
         </View>
       </View>
     );
@@ -109,6 +124,8 @@ class PlayerScreen extends Component {
 }
 
 const stateToProps = (state) => ({
+  name: state.player.name,
+  level: state.player.level,
   character: state.player.character,
 })
 

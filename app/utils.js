@@ -31,3 +31,23 @@ export const getPlayerClassImage = (character) => {
       return images.characters.assassin;
   }
 }
+
+export const getPlayerLevelStats = (level) => {
+  const baseHP = 100;
+  const HPfactor = 1.1;
+  const maxHp = Math.round(HPfactor ** (level - 1) * baseHP);
+  const minHp = 0;
+
+  const baseXP = 100;
+  const XPfactor = 1.2;
+  const maxXp = Math.round(XPfactor ** (level - 1) * baseXP);
+  const minXp = 0;
+
+  return {
+    level,
+    minHp,
+    maxHp,
+    minXp,
+    maxXp,
+  };
+};

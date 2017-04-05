@@ -1,10 +1,10 @@
 Tasks:
   ✔ basic Row/Col markup components @done(2017-04-04 22:26)
   ✔ swap quest to a new one upon victory @done(2017-04-04 23:05) @project(Tasks)
-  ☐ display level
-  ☐ calculate hp/xp/loss/gain from level
-  ☐ level promotion
-  ☐ level loss
+  ✔ display level @done(2017-04-05 13:52) @project(Tasks)
+  ✔ calculate hp/xp/loss/gain from level @done(2017-04-05 13:53) @project(Tasks)
+  ✔ level promotion @done(2017-04-05 13:53) @project(Tasks)
+  ✔ level loss @done(2017-04-05 13:53) @project(Tasks)
   ☐ name edit
   ☐ hero class selector
   ☐ app icon and name

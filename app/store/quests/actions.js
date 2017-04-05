@@ -32,6 +32,7 @@ export const completeQuest = (questId) => {
 
   actions.player.applyReward(reward);
   actions.modal.showQuestSuccessModal(quest);
+  actions.player.promoteLevel();
   action(actionTypes.COMPLETE_QUEST, {questId, quest});
 }
 export const failQuest = (questId) => {
@@ -40,5 +41,6 @@ export const failQuest = (questId) => {
 
   actions.player.applyPenalty(penalty);
   actions.modal.showQuestFailureModal(quest);
+  actions.player.degradeLevel();
   action(actionTypes.FAIL_QUEST, {questId, quest});
 }

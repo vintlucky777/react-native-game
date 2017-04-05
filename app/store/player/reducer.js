@@ -1,17 +1,19 @@
 import {actionTypes} from './actions';
 import {playerCharacters} from 'app/constants';
+import {getPlayerLevelStats} from 'app/utils';
+
+const startLevel = 1;
+const startStats = getPlayerLevelStats(startLevel);
 
 export const defaultState = {
   name: 'Nobody One',
-  level: 1,
+  level: startLevel,
   character: playerCharacters.BERSERKER,
-  hp: 100,
-  xp: 0,
-  minHp: 0,
-  maxHp: 100,
-  minXp: 0,
-  maxXp: 100,
+  ...startStats,
+  hp: startStats.maxHp,
+  xp: startStats.minHp,
 };
+
 
 export const playerReducer = (state = defaultState, {type, payload}) => {
   switch(type) {
@@ -46,6 +48,30 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
         hp: state.hp - payload.hp || state.hp,
         xp: state.xp - payload.xp || state.xp,
       };
+
+    case actionTypes.PLAYER_PROMOTE_LEVEL:
+      const stateAfterLevelPromotion = (state, level) => {
+        const levelStats = getPlayerLevelStats(level);
+        return {
+          ...state,
+          ...levelStats,
+          hp: levelStats.maxHp,
+        }
+      }
+      return stateAfterLevelPromotion(state, payload.level);
+
+    case actionTypes.PLAYER_DEGRADE_LEVEL:
+      const stateAfterLevelDegrade = (state, level) => {
+        const levelStats = getPlayerLevelStats(level);
+
+        return {
+          ...state,
+          ...levelStats,
+          xp: levelStats.minXp,
+          hp: state.level === 1 ? 1 : levelStats.maxHp,
+        }
+      }
+      return stateAfterLevelDegrade(state, payload.level);
 
     default:
       return state;

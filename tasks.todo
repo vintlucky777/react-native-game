@@ -8,6 +8,6 @@ Tasks:
   ✔ persist progress @done(2017-04-05 15:35) @project(Tasks)
   ✔ name edit @done(2017-04-05 23:33) @project(Tasks)
   ✔ hero class edit @done(2017-04-05 23:33) @project(Tasks)
+  ✔ app icon and name @done(2017-04-06 02:45) @project(Tasks)
   ☐ catch app switching/suspend/tray
-  ☐ app icon and name
   ☐ notifications / pushes / vibrate

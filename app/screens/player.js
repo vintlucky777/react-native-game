@@ -27,12 +27,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   ui: {
+    paddingTop: 22,
     flex: 1,
     backgroundColor: 'rgba(70,70,70,0.7)',
   },
   header: {
     flex: 0,
-    paddingTop: 20,
   },
   content: {
     justifyContent: 'center',
@@ -100,7 +100,7 @@ class PlayerScreen extends Component {
               clickable={true}
               underlayColor='#333'
               image={images.icons.back}
-              style={{marginLeft: 12, backgroundColor: '#4A453C'}}
+              style={{marginLeft: 8, backgroundColor: '#4A453C'}}
               onPress={showQuestsScreen}
             />
             <RoundImage

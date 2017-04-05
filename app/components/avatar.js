@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Image, StyleSheet, TouchableHighlight} from 'react-native';
 import {connect} from 'react-redux';
 
+import RoundImage from 'app/common/round-image';
 import {playerCharacters} from 'app/constants';
 import {getPlayerClassAvatar} from 'app/utils';
 
@@ -31,39 +32,14 @@ class Avatar extends React.Component {
   render() {
     const {
       character,
-      size,
-      borderSize,
-      style,
-      imageStyle,
-      clickable,
-      onPress,
-      onLongPress,
+      ...otherProps,
     } = this.props;
 
-    const image = (
-      <Image
-        source={getPlayerClassAvatar(character)}
-        style={[styles.image, imageStyle]}
-        resizeMode='cover'
-      />
-    );
-
-    if (clickable) {
-      return (
-        <TouchableHighlight
-          style={[styles.wrapper, style]}
-          onPress={onPress}
-          onLongPress={onLongPress}
-        >
-          {image}
-        </TouchableHighlight>
-      );
-    }
-
     return (
-      <View style={[styles.wrapper, style]}>
-        {image}
-      </View>
+      <RoundImage
+        image={getPlayerClassAvatar(character)}
+        {...otherProps}
+      />
     );
   }
 }

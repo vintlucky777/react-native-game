@@ -85,6 +85,7 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
         return {
           ...state,
           ...levelStats,
+          xp: levelStats.minXp,
           hp: levelStats.maxHp,
         }
       }

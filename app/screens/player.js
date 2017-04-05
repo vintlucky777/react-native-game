@@ -5,6 +5,7 @@ import {actions} from 'app/store/store';
 import _ from 'lodash';
 
 import Button from 'app/common/button';
+import RoundImage from 'app/common/round-image';
 import {Row, Col} from 'app/common/layout';
 import PlayerStats from 'app/components/player-stats';
 import {getPlayerClassImage} from 'app/utils';
@@ -95,16 +96,20 @@ class PlayerScreen extends Component {
         </View>
         <View style={styles.ui}>
           <Row style={styles.header}>
-            <Col flex={0} style={{width: 100}}>
-              <Button onPress={showQuestsScreen} style={{margin: 10}}>
-                Back to quests
-              </Button>
-            </Col>
-            <Col flex={0} style={{width: 100}}>
-              <Button onPress={() => actions.modal.showPlayerEditModal(player)} style={{margin: 10}}>
-                Edit
-              </Button>
-            </Col>
+            <RoundImage
+              clickable={true}
+              underlayColor='#333'
+              image={images.icons.back}
+              style={{marginLeft: 12, backgroundColor: '#4A453C'}}
+              onPress={showQuestsScreen}
+            />
+            <RoundImage
+              clickable={true}
+              underlayColor='#333'
+              image={images.icons.edit}
+              style={{marginLeft: 12, backgroundColor: '#4A453C'}}
+              onPress={() => actions.modal.showPlayerEditModal(player)}
+            />
           </Row>
           <View style={styles.content}>
             <Image

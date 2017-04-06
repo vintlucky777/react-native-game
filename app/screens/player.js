@@ -3,12 +3,13 @@ import {StyleSheet, Text, View, Image} from 'react-native';
 import {connect} from 'react-redux';
 import {actions} from 'app/store/store';
 import _ from 'lodash';
+// import PushNotification from 'react-native-push-notification';
 
 import Button from 'app/common/button';
 import RoundImage from 'app/common/round-image';
 import {Row, Col} from 'app/common/layout';
 import PlayerStats from 'app/components/player-stats';
-import {getPlayerClassImage} from 'app/utils';
+import {getPlayerClassImage, alert} from 'app/utils';
 
 import {images} from 'assets/images';
 
@@ -110,6 +111,17 @@ class PlayerScreen extends Component {
               style={{marginLeft: 12, backgroundColor: '#4A453C'}}
               onPress={() => actions.modal.showPlayerEditModal(player)}
             />
+            {/* <RoundImage
+              clickable={true}
+              underlayColor='#333'
+              style={{marginLeft: 12, backgroundColor: '#4A453C'}}
+              onPress={() => alert('Test!')}
+              // onPress={() => PushNotification.localNotification({
+              //   title: 'Questime',
+              //   message: 'Test notification',
+              //   playSound: true,
+              // })}
+            /> */}
           </Row>
           <View style={styles.content}>
             <Image

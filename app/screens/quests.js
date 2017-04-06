@@ -31,10 +31,10 @@ const styles = StyleSheet.create({
   },
   ui: {
     flex: 1,
+    paddingTop: 24,
     backgroundColor: 'rgba(20,20,20,0.7)',
   },
   header: {
-    marginTop: 20,
     marginLeft: 8,
     marginRight: 8,
     flex: 0,

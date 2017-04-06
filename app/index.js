@@ -5,7 +5,7 @@
  */
 
 import React from 'react';
-import {View} from 'react-native';
+import {View, StatusBar} from 'react-native';
 import {Provider} from 'react-redux';
 import {store, initialize} from 'app/store/store';
 
@@ -17,6 +17,11 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <View style={{flex: 1}}>
+          <StatusBar
+            barStyle='light-content'
+            translucent={true}
+            backgroundColor='rgba(0,0,0,0.2)'
+          />
           <ActiveScreen/>
           <ActiveModal/>
         </View>

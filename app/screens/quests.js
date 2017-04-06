@@ -138,7 +138,7 @@ class QuestsScreen extends Component {
         <View style={styles.ui}>
           <View style={styles.header}>
             <Avatar
-              clickable={true}
+              clickable={!activeQuestId}
               onPress={showPlayerScreen}
             />
             <PlayerStats style={styles.playerStats} />

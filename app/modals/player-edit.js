@@ -6,6 +6,7 @@ import {Row, Col} from 'app/common/layout';
 import Button from 'app/common/button';
 import {playerCharacters} from 'app/constants';
 import {actions} from 'app/store/store';
+import {isPlatformIOS} from 'app/utils';
 
 const styles = StyleSheet.create({
   wrapper: {
@@ -29,6 +30,8 @@ const styles = StyleSheet.create({
     color: '#222',
     paddingLeft: 10,
     paddingRight: 10,
+  },
+  nameInputIOS: {
     borderColor: '#888',
     borderWidth: 1,
     borderRadius: 4,
@@ -38,7 +41,7 @@ const styles = StyleSheet.create({
     borderColor: '#9FA9B3',
     marginLeft: 24,
     marginRight: 24,
-    marginBottom: 8,
+    marginBottom: 6,
     height: 36,
   },
   characterButtonActive: {
@@ -76,7 +79,10 @@ class PlayerEditModal extends React.Component {
       case 'name':
         return (
           <TextInput
-            style={styles.nameInput}
+            style={[
+              styles.nameInput,
+              isPlatformIOS && styles.nameInputIOS,
+            ]}
             defaultValue='Hello'
             editable={true}
             defaultValue={name}

@@ -10,6 +10,9 @@ export const clamp = (i, min, max) => Math.min(Math.max(i, min), max);
 export const lerp = (i, min, max) => min + (max - min) * i;
 export const unlerp = (value, min, max) => (value - min) / (max - min);
 
+export const isPlatformIOS = Platform.OS === 'ios';
+export const isPlatformAndroid = Platform.OS === 'android';
+
 export const getPlayerClassAvatar = (character) => {
   switch (character) {
     case playerCharacters.BERSERKER:

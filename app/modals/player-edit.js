@@ -34,12 +34,16 @@ const styles = StyleSheet.create({
     borderRadius: 4,
   },
   characterButton: {
-    backgroundColor: '#4F85B8',
-    borderColor: '#527698',
+    backgroundColor: '#ADBECD',
+    borderColor: '#9FA9B3',
     marginLeft: 24,
     marginRight: 24,
     marginBottom: 8,
     height: 36,
+  },
+  characterButtonActive: {
+    backgroundColor: '#4F85B8',
+    borderColor: '#527698',
   },
   characterText: {
     color: '#fff',
@@ -57,7 +61,10 @@ class PlayerEditModal extends React.Component {
       <Button
         key={char}
         onPress={() => actions.player.editCharacter(char)}
-        style={styles.characterButton}
+        style={[
+          styles.characterButton,
+          char === player.character && styles.characterButtonActive,
+        ]}
       >
         <Text style={styles.characterText}>
           {_.capitalize(char)}

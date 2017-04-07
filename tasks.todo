@@ -9,6 +9,6 @@ Tasks:
   ✔ name edit @done(2017-04-05 23:33) @project(Tasks)
   ✔ hero class edit @done(2017-04-05 23:33) @project(Tasks)
   ✔ app icon and name @done(2017-04-06 02:45) @project(Tasks)
-  ☐ add crashlytics beta-distribution
+  ✔ add crashlytics beta-distribution @done(2017-04-07 23:04) @project(Tasks)
   ☐ catch app switching/suspend/tray
   ☐ notifications / pushes / vibrate

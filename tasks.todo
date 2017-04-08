@@ -10,5 +10,6 @@ Tasks:
   ✔ hero class edit @done(2017-04-05 23:33) @project(Tasks)
   ✔ app icon and name @done(2017-04-06 02:45) @project(Tasks)
   ✔ add crashlytics beta-distribution @done(2017-04-07 23:04) @project(Tasks)
+  ☐ level up modal
   ☐ catch app switching/suspend/tray
   ☐ notifications / pushes / vibrate

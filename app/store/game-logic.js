@@ -1,5 +1,6 @@
 import {actions, store} from 'app/store/store';
 import {modalTypes} from 'app/constants';
+import {actionTypes as appStoreActionTypes} from 'app/store/app-state';
 
 const checkQuestIsDone = (state) => {
   const {activeQuest, startedAt} = state.quests;
@@ -27,4 +28,19 @@ export const gameLogicLoop = () => {
 
   gameLogic(state);
   requestAnimationFrame(gameLogicLoop);
+};
+
+export const initGameLogic = () => {
+  gameLogicLoop();
+};
+
+export const gameLogicMiddleware = store => next => action => {
+  const state = store.getState();
+  const {activeQuest} = state.quests;
+
+  next(action);
+
+  if (activeQuest && action.type === appStoreActionTypes.USER_LEFT_APP) {
+    actions.quests.failQuest(activeQuest.id);
+  }
 };

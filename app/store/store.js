@@ -1,4 +1,4 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, applyMiddleware} from 'redux';
 
 import * as modalActions from 'app/modals/actions';
 import {modalReducer} from 'app/modals/reducer';
@@ -12,7 +12,9 @@ import {playerReducer} from 'app/store/player/reducer';
 import * as questsActions from 'app/store/quests/actions';
 import {questsReducer} from 'app/store/quests/reducer';
 
-import {gameLogicLoop} from 'app/store/game-logic';
+import {initGameLogic, gameLogicMiddleware} from 'app/store/game-logic';
+import {loggerMiddleware} from 'app/store/utils';
+import {observeAppState} from 'app/store/app-state';
 import {storage} from 'app/utils';
 import {storageKeys} from 'app/constants';
 
@@ -23,7 +25,12 @@ const rootReducer = combineReducers({
   screens: screensReducer,
 })
 
-export const store = createStore(rootReducer);
+export const store = createStore(
+  rootReducer,
+  applyMiddleware(
+    // loggerMiddleware,
+    gameLogicMiddleware
+));
 export const actions = {
   quests: questsActions,
   player: playerActions,
@@ -34,6 +41,6 @@ export const actions = {
 export const initialize = async () => {
   const storedPlayer = await storage.getItem(storageKeys.PLAYER_STATE)
   playerActions.initPlayer(storedPlayer);
-
-  gameLogicLoop();
+  observeAppState();
+  initGameLogic();
 };

@@ -2,6 +2,7 @@ import _ from 'lodash';
 export {quests as quests, debugQuests as debugQuests} from 'app/quests';
 
 export const screenNames = {
+  ONBOARDING: 'ONBOARDING',
   PLAYER: 'PLAYER',
   QUESTS: 'QUESTS',
 };

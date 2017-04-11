@@ -41,6 +41,13 @@ export const actions = {
 export const initialize = async () => {
   const storedPlayer = await storage.getItem(storageKeys.PLAYER_STATE)
   playerActions.initPlayer(storedPlayer);
+
+  const state = store.getState();
+
+  if (!state.player.onboardingComplete) {
+    actions.screens.showOnboardingScreen();
+  }
+
   observeAppState();
   initGameLogic();
 };

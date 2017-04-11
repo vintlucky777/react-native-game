@@ -38,7 +38,7 @@ export default class Swiper extends React.Component {
   }
 
   render() {
-    const {style, pageStyle, items, initialPage, onChangePage, locked} = this.props;
+    const {style, pageStyle, items, initialPage, onChangePage, locked, ...otherProps} = this.props;
 
     return (
       <RNSwiper
@@ -50,6 +50,7 @@ export default class Swiper extends React.Component {
         onMomentumScrollEnd={(e, state) => onChangePage(state.index)}
         style={[styles.container, style]}
         pageStyle={[styles.item, pageStyle]}
+        {...otherProps}
       >
         {items.map(this._renderPage)}
       </RNSwiper>

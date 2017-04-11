@@ -10,3 +10,4 @@ export const actionTypes = {
 export const showScreen = (screen) => action(SHOW_SCREEN, {screen});
 export const showPlayerScreen = () => showScreen(screenNames.PLAYER);
 export const showQuestsScreen = () => showScreen(screenNames.QUESTS);
+export const showOnboardingScreen = () => showScreen(screenNames.ONBOARDING);

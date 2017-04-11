@@ -24,7 +24,7 @@ export class Row extends React.Component {
       right: rowStyles.rowJustifyRight,
       center: rowStyles.rowJustifyCenter,
       justify: rowStyles.rowJustifyBetween,
-      'space-between': rowStyles.rowJustifySpaceAround,
+      'space-around': rowStyles.rowJustifySpaceAround,
     };
     const alignStyles = {
       top: rowStyles.rowAlignTop,
@@ -70,12 +70,12 @@ export class Col extends React.Component {
       bottom: colStyles.colJustifyBottom,
       center: colStyles.colJustifyCenter,
       justify: colStyles.colJustifyBetween,
-      'space-between': colStyles.colJustifySpaceAround,
+      'space-around': colStyles.colJustifySpaceAround,
     };
     const alignStyles = {
       left: colStyles.colAlignLeft,
-      right: colStyles.colAlignCenter,
-      center: colStyles.colAlignRight,
+      center: colStyles.colAlignCenter,
+      right: colStyles.colAlignRight,
     };
 
     return (

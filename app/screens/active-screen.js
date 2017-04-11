@@ -6,6 +6,7 @@ import {screenNames} from 'app/constants';
 
 import QuestsScreen from './quests';
 import PlayerScreen from './player';
+import Onboarding from './onboarding';
 
 const styles = StyleSheet.create({
   emptyScreen: {
@@ -23,6 +24,9 @@ const styles = StyleSheet.create({
 class ActiveScreen extends React.Component {
   _getActiveScreen() {
     switch (this.props.screenName) {
+      case screenNames.ONBOARDING:
+        return <Onboarding/>;
+
       case screenNames.PLAYER:
         return <PlayerScreen/>;
 

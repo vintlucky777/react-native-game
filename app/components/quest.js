@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 30,
+    fontSize: 28,
     textAlign: 'center',
     color: 'white',
     marginBottom: 10,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     borderRadius: 86,
   },
   duration: {
-    fontSize: 80,
+    fontSize: 64,
     fontWeight: '200',
     color: 'white',
   },

@@ -1,5 +1,5 @@
 import {action} from 'app/store/utils';
-import {store} from 'app/store/store';
+import {store, actions} from 'app/store/store';
 import {playerCharacters} from 'app/constants';
 import {getPlayerLevelStats} from 'app/utils';
 
@@ -12,9 +12,11 @@ export const actionTypes = {
   PLAYER_SET_LEVEL: 'PLAYER_SET_LEVEL',
   PLAYER_PROMOTE_LEVEL: 'PLAYER_PROMOTE_LEVEL',
   PLAYER_DEGRADE_LEVEL: 'PLAYER_DEGRADE_LEVEL',
+  PLAYER_COMPLETE_ONBOARDING: 'PLAYER_COMPLETE_ONBOARDING',
 };
 
 export const initPlayer = (state) => action(actionTypes.PLAYER_INIT, {...state});
+export const completeOnboarding = () => action(actionTypes.PLAYER_COMPLETE_ONBOARDING);
 
 export const editName = (name) => action(actionTypes.PLAYER_EDIT_NAME, {name});
 export const editCharacter = (character) => action(actionTypes.PLAYER_EDIT_CHARACTER, {character});

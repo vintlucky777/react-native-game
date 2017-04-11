@@ -9,6 +9,7 @@ export const defaultState = {
   name: 'Nobody One',
   level: startLevel,
   character: playerCharacters.BERSERKER,
+  onboardingComplete: false,
   ...startStats,
   hp: startStats.maxHp,
   xp: startStats.minHp,
@@ -44,6 +45,14 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
         ...state,
         ...payload,
       };
+
+    case actionTypes.PLAYER_COMPLETE_ONBOARDING:
+      nextPlayerState = {
+        ...state,
+        onboardingComplete: true,
+      };
+      persistPlayer(nextPlayerState);
+      return nextPlayerState;
 
     case actionTypes.PLAYER_EDIT_NAME:
       nextPlayerState = {

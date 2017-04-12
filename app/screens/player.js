@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, Vibration} from 'react-native';
 import {connect} from 'react-redux';
+import PushNotification from 'react-native-push-notification';
 import {actions} from 'app/store/store';
 import _ from 'lodash';
 // import PushNotification from 'react-native-push-notification';
@@ -115,12 +116,23 @@ class PlayerScreen extends Component {
               clickable={true}
               underlayColor='#333'
               style={{marginLeft: 12, backgroundColor: '#4A453C'}}
-              onPress={() => alert('Test!')}
-              // onPress={() => PushNotification.localNotification({
-              //   title: 'Questime',
-              //   message: 'Test notification',
-              //   playSound: true,
-              // })}
+              onPress={() => {
+                alert('Push notification!');
+                PushNotification.localNotification({
+                  title: 'Questime',
+                  message: 'Test notification',
+                  playSound: true,
+                })
+              }}
+            />
+            <RoundImage
+              clickable={true}
+              underlayColor='#333'
+              style={{marginLeft: 12, backgroundColor: '#4A453C'}}
+              onPress={() => {
+                alert('Vibrate!')
+                Vibration.vibrate();
+              }}
             /> */}
           </Row>
           <View style={styles.content}>

@@ -5,6 +5,7 @@ import {StyleSheet, View, Text} from 'react-native';
 import {modalTypes} from 'app/constants';
 import PlayerEditModal from 'app/modals/player-edit';
 import LevelUpModal from 'app/modals/level-up';
+import LevelDegradeModal from 'app/modals/level-degrade';
 import QuestInfoModal from 'app/modals/quest-info';
 import QuestVictoryModal from 'app/modals/quest-victory';
 import QuestDefeatModal from 'app/modals/quest-defeat';
@@ -32,19 +33,21 @@ class ActiveModal extends React.Component {
   _slideAnimation = new SlideAnimation({slideFrom: 'bottom'});
 
   _getModalContent(modalType) {
-    const {modal} = this.props;
+    const {modalData} = this.props;
 
     switch (modalType) {
       case modalTypes.PLAYER_EDIT:
-        return <PlayerEditModal modal={modal}/>
+        return <PlayerEditModal modal={modalData}/>
       case modalTypes.LEVEL_UP:
-        return <LevelUpModal modal={modal}/>
+        return <LevelUpModal modal={modalData}/>
+      case modalTypes.LEVEL_DEGRADE:
+        return <LevelDegradeModal modal={modalData}/>
       case modalTypes.QUEST_INFO:
-        return <QuestInfoModal modal={modal}/>
+        return <QuestInfoModal modal={modalData}/>
       case modalTypes.QUEST_VICTORY:
-        return <QuestVictoryModal modal={modal}/>
+        return <QuestVictoryModal modal={modalData}/>
       case modalTypes.QUEST_DEFEAT:
-        return <QuestDefeatModal modal={modal}/>
+        return <QuestDefeatModal modal={modalData}/>
       default:
         return (
           <View style={styles.emptyModal}>
@@ -58,8 +61,8 @@ class ActiveModal extends React.Component {
 
   render() {
     const {showModal, modalType, hideModal} = this.props;
-    const modal = this.props.modal || {};
-    const {title, actionText, dismissable} = modal;
+    const modalData = this.props.modalData || {};
+    const {title, actionText, dismissable} = modalData;
 
     return (
       <PopupDialog
@@ -82,7 +85,7 @@ class ActiveModal extends React.Component {
 const stateToProps = (state) => ({
   showModal: state.modal.showModal,
   modalType: state.modal.activeModal,
-  modal: state.modal.modal,
+  modalData: state.modal.modalData,
 })
 
 const actionsToProps = () => ({

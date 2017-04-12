@@ -4,10 +4,6 @@ import {images} from 'assets/images';
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    borderWidth: 2,
     borderColor: '#746E5D',
     justifyContent: 'center',
     alignItems: 'center',
@@ -22,6 +18,8 @@ const styles = StyleSheet.create({
 export default class RoundImage extends React.Component {
   static defaultProps = {
     image: images.icons.success,
+    size: 60,
+    borderSize: 2,
     onPress: () => {},
     onLongPress: () => {},
   };
@@ -38,11 +36,16 @@ export default class RoundImage extends React.Component {
       onLongPress,
       ...otherProps,
     } = this.props;
+    const totalSize = 2 * borderSize + size;
 
     const img = (
       <Image
         source={image}
-        style={[styles.image, imageStyle]}
+        style={[styles.image, imageStyle, {
+          width: size,
+          height: size,
+          borderRadius: size / 2,
+        }]}
         resizeMode='cover'
       />
     );
@@ -50,7 +53,12 @@ export default class RoundImage extends React.Component {
     if (clickable) {
       return (
         <TouchableHighlight
-          style={[styles.wrapper, style]}
+          style={[styles.wrapper, style, {
+            width: totalSize,
+            height: totalSize,
+            borderRadius: totalSize / 2,
+            borderWidth: borderSize,
+          }]}
           onPress={onPress}
           onLongPress={onLongPress}
           {...otherProps}
@@ -61,7 +69,12 @@ export default class RoundImage extends React.Component {
     }
 
     return (
-      <View style={[styles.wrapper, style]}>
+      <View style={[styles.wrapper, style, {
+        width: totalSize,
+        height: totalSize,
+        borderRadius: totalSize / 2,
+        borderWidth: borderSize,
+      }]}>
         {img}
       </View>
     );

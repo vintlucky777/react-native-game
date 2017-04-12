@@ -12,7 +12,7 @@ Tasks:
   ✔ add crashlytics beta-distribution @done(2017-04-07 23:04) @project(Tasks)
   ✔ catch app switching/suspend/tray @done(2017-04-09 16:38) @project(Tasks)
   ✔ onboarding @done(2017-04-11 12:01) @project(Tasks)
-  ☐ level up modal
+  ✔ level up modal @done(2017-04-12 02:58) @project(Tasks)
   ☐ left/right buttons on quests screens
   ☐ display bonus/punishment on quest info
-  ☐ push-notifications / vibrate
+  ✔ push-notifications / vibrate @done(2017-04-12 02:38) @project(Tasks)

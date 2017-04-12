@@ -6,23 +6,6 @@ import RoundImage from 'app/common/round-image';
 import {playerCharacters} from 'app/constants';
 import {getPlayerClassAvatar} from 'app/utils';
 
-const styles = StyleSheet.create({
-  wrapper: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
-    borderWidth: 2,
-    borderColor: '#746E5D',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  image: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
-  },
-});
-
 class Avatar extends React.Component {
   static defaultProps = {
     onPress: () => {},

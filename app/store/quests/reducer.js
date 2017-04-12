@@ -6,13 +6,17 @@ const questGroups = _.groupBy(quests, q => q.duration);
 const questSamples = _.map(questGroups, questGroup => _.sample(questGroup));
 // const gameQuests = [...debugQuests, ...questSamples];
 
-const makeDebugQuest = () => ({
-  ..._.sample(quests),
-  id: 'debugQuest1',
-  duration: 3,
-  reward: {xp: 10},
-  penalty: {hp: 10},
-});
+const makeDebugQuest = () => {
+  const sampleQuest = _.sample(quests);
+  return {
+    ...sampleQuest,
+    id: 'debugQuest1',
+    title: `[debug] ${sampleQuest.title}`,
+    duration: 3,
+    reward: {xp: 100},
+    penalty: {hp: 100},
+  }
+};
 
 const gameQuests = [makeDebugQuest(), ...questSamples];
 

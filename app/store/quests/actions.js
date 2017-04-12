@@ -1,6 +1,8 @@
 import _ from 'lodash';
+import {AppState} from 'react-native';
 import {action} from 'app/store/utils';
 import {store, actions} from 'app/store/store';
+import {vibrate, localPush} from 'app/utils';
 
 export const actionTypes = {
   SELECT_QUEST: 'SELECT_QUEST',
@@ -33,6 +35,7 @@ export const completeQuest = (questId) => {
   actions.player.applyReward(reward);
   actions.modal.showQuestSuccessModal(quest);
   actions.player.promoteLevel();
+  requestAnimationFrame(vibrate);
   action(actionTypes.COMPLETE_QUEST, {questId, quest});
 }
 export const failQuest = (questId) => {
@@ -42,5 +45,9 @@ export const failQuest = (questId) => {
   actions.player.applyPenalty(penalty);
   actions.modal.showQuestFailureModal(quest);
   actions.player.degradeLevel();
+  requestAnimationFrame(vibrate);
+  if (AppState.currentState !== 'active') {
+    localPush({title: 'Quest failed', message: 'You\'ve left the app', playSound: true});
+  }
   action(actionTypes.FAIL_QUEST, {questId, quest});
 }

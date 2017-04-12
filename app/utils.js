@@ -1,4 +1,5 @@
-import {Platform, AlertIOS, ToastAndroid, AsyncStorage} from 'react-native';
+import {Platform, AlertIOS, ToastAndroid, AsyncStorage, Vibration} from 'react-native';
+import PushNotification from 'react-native-push-notification';
 import {playerCharacters} from 'app/constants';
 import {images} from 'assets/images';
 
@@ -60,3 +61,6 @@ export const storage = {
   getItem: (key, cb) => AsyncStorage.getItem(key, cb).then(JSON.parse),
   removeItem: (key, cb) => AsyncStorage.removeItem(key, cb),
 };
+
+export const localPush = ({title, message, playSound = false}) => PushNotification.localNotification({title, message, playSound})
+export const vibrate = () => Vibration.vibrate();

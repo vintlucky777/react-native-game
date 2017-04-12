@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   congrats: {fontSize: 18, marginBottom: 12},
 })
 
-class LevelUpModal extends React.Component {
+class LevelDegradeModal extends React.Component {
   render() {
     const {player} = this.props;
     return (
@@ -19,11 +19,11 @@ class LevelUpModal extends React.Component {
         <Avatar size={80}/>
         <Text style={styles.statement}>
           <Text style={styles.name}>{player.name}</Text>
-          <Text style={styles.level}> is now level {player.level}</Text>
+          <Text style={styles.level}> dropped to level {player.level}</Text>
         </Text>
       </Col>
     );
   }
 }
 
-export default connect(state => ({player: state.player}))(LevelUpModal)
+export default connect(state => ({player: state.player}))(LevelDegradeModal)

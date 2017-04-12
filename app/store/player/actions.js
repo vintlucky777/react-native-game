@@ -34,7 +34,10 @@ export const promoteLevel = () => {
       nextLevel += 1;
     }
 
+    const {player: nextPlayer} = store.getState();
+
     action(actionTypes.PLAYER_PROMOTE_LEVEL, {level: nextLevel})
+    actions.modal.showLevelUpModal(player, nextPlayer);
   }
 };
 
@@ -50,6 +53,9 @@ export const degradeLevel = () => {
       nextLevel = level - 1;
     }
 
+    const {player: nextPlayer} = store.getState();
+
     action(actionTypes.PLAYER_DEGRADE_LEVEL, {level: nextLevel})
+    actions.modal.showLevelDegradeModal(player, nextPlayer);
   }
 };

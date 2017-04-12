@@ -73,8 +73,8 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
     case actionTypes.PLAYER_APPLY_REWARD:
       nextPlayerState = {
         ...state,
-        hp: state.hp + payload.hp || state.hp,
-        xp: state.xp + payload.xp || state.xp,
+        hp: state.hp + (payload.hp || 0),
+        xp: state.xp + (payload.xp || 0),
       };
       persistPlayer(nextPlayerState);
       return nextPlayerState;
@@ -82,8 +82,8 @@ export const playerReducer = (state = defaultState, {type, payload}) => {
     case actionTypes.PLAYER_APPLY_PENALTY:
       nextPlayerState = {
         ...state,
-        hp: state.hp - payload.hp || state.hp,
-        xp: state.xp - payload.xp || state.xp,
+        hp: state.hp - (payload.hp || 0),
+        xp: state.xp - (payload.xp || 0),
       };
       persistPlayer(nextPlayerState);
       return nextPlayerState;

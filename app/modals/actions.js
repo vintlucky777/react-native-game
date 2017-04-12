@@ -10,10 +10,10 @@ export const actionTypes = {
 };
 
 export const hideModal = () => action(HIDE_MODAL);
-export const showModal = (modalType, modal) => action(SHOW_MODAL, {modalType, modal});
-export const showLevelUpModal = (prevPlayer, updatedPlayer) => action(SHOW_MODAL, {
+export const showModal = ({modalType, modalData}) => action(SHOW_MODAL, {modalType, modalData});
+export const showLevelUpModal = (prevPlayer, updatedPlayer) => showModal({
   modalType: modalTypes.LEVEL_UP,
-  modal: {
+  modalData: {
     title: 'Level up!',
     actionText: 'Sweet!',
     dismissable: false,
@@ -21,36 +21,46 @@ export const showLevelUpModal = (prevPlayer, updatedPlayer) => action(SHOW_MODAL
     updatedPlayer,
   },
 });
-export const showQuestInfoModal = (quest) => action(SHOW_MODAL, {
+export const showLevelDegradeModal = (prevPlayer, updatedPlayer) => showModal({
+  modalType: modalTypes.LEVEL_DEGRADE,
+  modalData: {
+    title: 'Level lost!',
+    actionText: 'So bad...',
+    dismissable: false,
+    prevPlayer,
+    updatedPlayer,
+  },
+});
+export const showQuestInfoModal = (quest) => showModal({
   modalType: modalTypes.QUEST_INFO,
-  modal: {
+  modalData: {
     quest: quest,
     title: quest.title,
     actionText: 'Got it',
     dismissable: true,
   },
 });
-export const showQuestSuccessModal = (quest) => action(SHOW_MODAL, {
+export const showQuestSuccessModal = (quest) => showModal({
   modalType: modalTypes.QUEST_VICTORY,
-  modal: {
+  modalData: {
     quest: quest,
     title: quest.title,
     actionText: 'Nice!',
     dismissable: false,
   },
 });
-export const showQuestFailureModal = (quest) => action(SHOW_MODAL, {
+export const showQuestFailureModal = (quest) => showModal({
   modalType: modalTypes.QUEST_DEFEAT,
-  modal: {
+  modalData: {
     quest: quest,
     title: quest.title,
     actionText: 'Oh...',
     dismissable: false,
   },
 });
-export const showPlayerEditModal = (player) => action(SHOW_MODAL, {
+export const showPlayerEditModal = (player) => showModal({
   modalType: modalTypes.PLAYER_EDIT,
-  modal: {
+  modalData: {
     player: player,
     title: 'Edit player',
     actionText: 'Done',

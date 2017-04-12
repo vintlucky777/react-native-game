@@ -1,4 +1,4 @@
-package com.questime;
+package com.questimeteam.questime;
 
 import com.facebook.react.ReactActivity;
 import com.crashlytics.android.Crashlytics;

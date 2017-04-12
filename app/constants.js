@@ -9,6 +9,7 @@ export const screenNames = {
 
 export const modalTypes = {
   LEVEL_UP: 'LEVEL_UP',
+  LEVEL_DEGRADE: 'LEVEL_DEGRADE',
   PLAYER_EDIT: 'PLAYER_EDIT',
   QUEST_INFO: 'QUEST_INFO',
   QUEST_VICTORY: 'QUEST_VICTORY',

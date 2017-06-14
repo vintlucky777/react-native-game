@@ -4,6 +4,10 @@
 
 © Moorty
 
+![Video thumb](/.git_thumb.png)
+
+[Watch demo on youtube](https://www.youtube.com/watch?v=PShhCKrxgC8)
+
 ## Prerequisites
 - NPM
 - react-native

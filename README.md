@@ -23,4 +23,6 @@ react-native run-ios|run-android
 - Victor Klochikhin (@vintlucky777)
 - Timur Suleymanov (@moorty)
 
-© 2017 Questime Team
+Game idea and mechanics © 2017 Questime Team
+
+Various game assets are pulled from the web and may be subject to third-party copyright.
